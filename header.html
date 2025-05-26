@@ -1,0 +1,197 @@
+<header id="header" class="bg-white py-3 px-6 flex justify-between items-center sticky top-0 shadow-md z-20 rounded-b-3xl transition-all duration-300" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
+    <div class="flex items-center">
+        <a href="index.html" id="header-logo-link">
+            <img src="icons/Logo Text.png" alt="Elevate Logo" class="h-10" style="image-rendering: auto;">
+        </a>
+    </div>
+    <!-- Desktop Navigation -->
+    <nav id="nav-menu" class="hidden md:flex space-x-8 text-lg font-medium relative">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a>
+        <a href="features.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Features</a>
+        <a href="elevate-pro.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Elevate PRO</a>
+        <a href="support.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact Us</a>
+    </nav>
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+    <!-- Mobile Dropdown Menu -->
+    <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg md:hidden z-30 rounded-b-3xl overflow-hidden">
+        <div class="relative flex flex-col items-center py-4 space-y-4 text-lg font-medium">
+            <a href="index.html" class="mobile-nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a>
+            <a href="features.html" class="mobile-nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Features</a>
+            <a href="elevate-pro.html" class="mobile-nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Elevate PRO</a>
+            <a href="support.html" class="mobile-nav-link text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact Us</a>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle
+        function initializeMobileMenu() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const header = document.getElementById('header');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (menuBtn && mobileMenu && header && hamburgerIcon && closeIcon) {
+                console.log('Mobile menu elements found, binding event listener');
+                menuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Mobile menu button clicked');
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden', !isHidden);
+                    hamburgerIcon.classList.toggle('hidden', !isHidden);
+                    closeIcon.classList.toggle('hidden', isHidden);
+                    mobileMenu.classList.toggle('menu-open', isHidden);
+                    mobileMenu.classList.toggle('menu-close', !isHidden);
+                    header.classList.toggle('rounded-b-3xl', !isHidden);
+                    header.classList.toggle('rounded-b-none', isHidden);
+                    mobileMenu.style.opacity = isHidden ? '1' : '0';
+                    mobileMenu.style.transform = isHidden ? 'scaleY(1)' : 'scaleY(0)';
+                });
+
+                // Handle mobile nav link clicks
+                mobileMenu.addEventListener('click', (e) => {
+                    const link = e.target.closest('.mobile-nav-link');
+                    if (link) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Mobile nav link clicked:', link.getAttribute('href'));
+                        const href = link.getAttribute('href');
+                        mobileMenu.classList.remove('menu-open');
+                        mobileMenu.classList.add('menu-close');
+                        header.classList.add('rounded-b-3xl');
+                        header.classList.remove('rounded-b-none');
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.classList.remove('menu-close');
+                            mobileMenu.style.opacity = '0';
+                            mobileMenu.style.transform = 'scaleY(0)';
+                            window.location.href = href;
+                        }, 400);
+                    }
+                });
+            } else {
+                console.error('Mobile menu elements not found:', {
+                    menuBtn: !!menuBtn,
+                    mobileMenu: !!mobileMenu,
+                    header: !!header,
+                    hamburgerIcon: !!hamburgerIcon,
+                    closeIcon: !!closeIcon
+                });
+            }
+        }
+
+        // Ensure script runs after DOM is loaded or with delay
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            console.log('DOM already loaded, initializing mobile menu');
+            initializeMobileMenu();
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('DOMContentLoaded, initializing mobile menu');
+                initializeMobileMenu();
+            });
+        }
+
+        // Fallback: Retry after a short delay to handle dynamic includes
+        setTimeout(() => {
+            if (!document.getElementById('mobile-menu-btn').hasAttribute('data-listener')) {
+                console.log('Fallback: Initializing mobile menu after delay');
+                initializeMobileMenu();
+                document.getElementById('mobile-menu-btn').setAttribute('data-listener', 'true');
+            }
+        }, 500);
+    </script>
+</header>
+
+<style>
+    a.mobile-nav-link.active {
+        color: #3A86FF !important;
+        font-weight: bold;
+    }
+
+    .rounded-b-none {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    #mobile-menu {
+        transform-origin: top;
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    .menu-open {
+        animation: slideDownBounce 0.4s ease-out forwards;
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    .menu-close {
+        animation: slideUp 0.4s ease-in forwards;
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    @keyframes slideDownBounce {
+        0% {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+        60% {
+            opacity: 1;
+            transform: scaleY(1.1);
+        }
+        80% {
+            transform: scaleY(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+        #header {
+            justify-content: space-between;
+            align-items: center;
+            display: flex !important;
+        }
+
+        #nav-menu {
+            display: none !important; /* Hide desktop navigation in mobile view */
+        }
+
+        .flex.items-center img {
+            height: 3rem; /* Increased logo size for mobile */
+            max-width: 75%; /* Prevent logo from overflowing */
+            object-fit: contain;
+            image-rendering: auto;
+        }
+
+        #mobile-menu-btn {
+            display: block; /* Ensure mobile menu button is visible */
+            position: relative;
+            z-index: 30; /* Keep button above other elements */
+        }
+    }
+</style>
