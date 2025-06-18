@@ -1,6 +1,6 @@
 const heroData = {
     title: "Elevate Your Fitness<br>Launch Coming Soon!",
-    subtitle: "Be the first to experience personalized workouts, real-time tracking, and a supportive community. Join the waitlist now!",
+    subtitle: "Join the waitlist to unlock custom workouts, smart meal plans, and progress tracking — all in one AI-driven fitness app.",
     integrations: []
 };
 
