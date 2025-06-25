@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Elevate Fitness Blog - Tips, workouts, nutrition advice, and more to help you achieve your fitness goals.">
+    <title>Elevate - Blog | Workout & Nutrition Tips</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icons/rounded.logo.png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QKDPRV2JF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3QKDPRV2JF');
+    </script>
+</head>
+<body class="font-sans text-gray-900 bg-white flex flex-col min-h-screen">
+    <div class="flex-1">
+        <div include-html="header.html"></div>
+
+        <!-- Hero Section -->
+        <section class="py-32 px-6 bg-white text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20" style="background: linear-gradient(to bottom, #a6ddff 0%, #0073ff 100%); animation: gradientPulse 12s infinite ease-in-out;"></div>
+            <div class="absolute inset-0 opacity-15" style="background: repeating-linear-gradient(45deg, #a4cdff 0px, #a4cdff 2px, transparent 2px, transparent 12px); animation: lineDrift 18s infinite linear;"></div>
+            <div class="relative z-10 max-w-6xl mx-auto">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight animate-fade-in">Elevate Your Fitness Journey</h1>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10 animate-fade-in-delay">Explore expert tips, workouts, and nutrition advice to transform your body and mind.</p>
+                <div class="flex justify-center gap-6">
+                    <a href="#blog-section" id="read-blog-btn" class="bg-blue-600 text-white px-10 py-4 rounded-full hover:bg-blue-700 font-semibold text-lg transition-colors shadow-lg animate-fade-in-delay-2">Read the Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog-section" class="py-16 px-6 bg-gray-50">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Elevate Fitness Blog</h1>
+                <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Discover expert tips, workouts, nutrition advice, and motivation to elevate your fitness journey.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <a href="blogs/frequency-volume" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/Muscle-building-squat.png" alt="Weightlifting for Muscle Growth" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">Volume, Sets & Frequency: How much should I train? | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Build muscle smarter with high-frequency, low-volume training. Our fitness app helps you optimize workouts for sustainable hypertrophy.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 2 -->
+                    <a href="blogs/rep-ranges" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/high-reps.png" alt="High Rep Workout" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">Rep Ranges and Muscle Growth: Latest Science | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Discover how effort, not rep count, drives muscle growth in 2025. Optimize your training with the latest science.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 3 -->
+                    <a href="blogs/training-intensity" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/intensity.png" alt="Recovery Strategies" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">Training Intensity: How Close to Failure Is Enough? | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Learn how close to failure you need to train to build muscle—no need for forced reps or burnout to see results.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 4 -->
+                    <a href="blogs/warm-up" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/warm-up-preview.png" alt="Warm Up" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">The Ultimate Guide to Warming Up Before You Train | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Learn how to warm up effectively before your workouts to boost performance, prevent injury, and optimize muscle growth with Elevate Fitness.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 1 -->
+                    <a href="blogs/rest-times" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/rest-times.png" alt="Strength Training Tips" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">Rest Times: How Long Should You Really Rest? | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Learn how long to rest between sets to maximize muscle growth and performance for Strength and Hypertrophy with Elevate Fitness.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 2 -->
+                    <a href="blogs/session-length" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="blogs/blog-icons/session-length.png" alt="Session Lengths" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">How Long Should a Gym Session Be for Bodybuilding? | Elevate Fitness</h2>
+                            <p class="text-gray-600 mb-4">Optimize your bodybuilding workouts with focused, efficient gym sessions. Learn how long your sessions should be.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 3 -->
+                    <a href="blog-post-3.html" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="icons/recovery-blog.jpg" alt="Recovery Strategies" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">Top Recovery Strategies for Athletes</h2>
+                            <p class="text-gray-600 mb-4">Maximize your performance with these proven recovery techniques to keep your body in top shape.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                    <!-- Blog Post 4 -->
+                    <a href="blog-post-4.html" class="blog-card bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <img src="icons/motivation-blog.jpg" alt="Fitness Motivation" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-2">How to Stay Motivated on Your Fitness Journey</h2>
+                            <p class="text-gray-600 mb-4">Find inspiration and practical tips to maintain your motivation and achieve your fitness goals.</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 font-semibold">Read More</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div include-html="footer.html"></div>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIncludes().then(() => {
+                if (typeof setActiveNavLink === 'function') setActiveNavLink();
+                if (typeof setupNavListeners === 'function') setupNavListeners();
+                if (typeof setupMobileMenu === 'function') setupMobileMenu();
+            });
+
+            // Smooth scroll for "Read the Blog" button
+            const readBlogBtn = document.getElementById('read-blog-btn');
+            if (readBlogBtn) {
+                readBlogBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const blogSection = document.getElementById('blog-section');
+                    if (blogSection) {
+                        blogSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Custom Animations and Styles -->
+    <style>
+        @keyframes gradientPulse {
+            0% { opacity: 0.20; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.01); }
+            100% { opacity: 0.20; transform: scale(1); }
+        }
+        @keyframes lineDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 12px 12px; }
+        }
+        @keyframes subtlePulse {
+            0% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.01); }
+            100% { opacity: 0.25; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDelay {
+            0% { opacity: 0; transform: translateY(20px); }
+            20% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDelay2 {
+            0% { opacity: 0; transform: translateY(20px); }
+            40% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-fade-in-delay {
+            animation: fadeInDelay 1.5s ease-out forwards;
+        }
+        .animate-fade-in-delay-2 {
+            animation: fadeInDelay2 2s ease-out forwards;
+        }
+        .animate-bounce-slow {
+            animation: bounceSlow 3s infinite ease-in-out;
+        }
+    </style>
+</body>
+</html>
