@@ -5,9 +5,9 @@ const heroData = {
 };
 
 const features = [
-    { icon: `<img src="icons/dumbbell.png" alt="Group 71 Icon" class="h-14 mx-auto">`, title: "Workouts", desc: "Effortlessly track your workouts, logging every set, and review your progress.", href: "#workout-showcase" },
-    { icon: `<img src="icons/Nutrition.png" alt="Nutrition Icon" class="h-14 mx-auto">`, title: "Nutrition", desc: "Easily log your meals, tracking your nutrition and feel better than ever.", href: "#nutrition-showcase" },
-    { icon: `<img src="icons/social 2.png" alt="Social Icon" class="h-14 mx-auto">`, title: "Social", desc: "Follow and compete with your friends and other athletes", href: "#social-showcase" }
+    { icon: `<img src="/icons/dumbbell.png" alt="Group 71 Icon" class="h-14 mx-auto">`, title: "Workouts", desc: "Effortlessly track your workouts, logging every set, and review your progress.", href: "#workout-showcase" },
+    { icon: `<img src="/icons/Nutrition.png" alt="Nutrition Icon" class="h-14 mx-auto">`, title: "Nutrition", desc: "Easily log your meals, tracking your nutrition and feel better than ever.", href: "#nutrition-showcase" },
+    { icon: `<img src="/icons/social 2.png" alt="Social Icon" class="h-14 mx-auto">`, title: "Social", desc: "Follow and compete with your friends and other athletes", href: "#social-showcase" }
 ];
 
 const stats = [
@@ -140,7 +140,7 @@ function openPopup(element, title, description, imageSrc, features) {
             const rest = lines.length > 1 ? ' – ' + lines.slice(1).join(' – ') : '';
             return `
                 <li class="popup-feature">
-                    <img src="${feature.image}" alt="Feature Icon" class="popup-feature-icon">
+                    <img src="${feature.icon}" alt="Feature Icon" class="popup-feature-icon">
                     <span><strong>${heading}</strong>${rest}</span>
                 </li>
             `;
@@ -178,13 +178,13 @@ function closePopup() {
     }
 }
 
-async function loadIncludes(attempt = 1, maxAttempts = 3) {
+async function loadIncludes(attempt = 1, maxAttempts = 5) {
     const elements = document.querySelectorAll('[include-html]');
     if (elements.length === 0) {
         console.warn('No elements with include-html attribute found');
         return;
     }
-    for (const elem of elements) {
+    const promises = Array.from(elements).map(async (elem) => {
         const file = elem.getAttribute('include-html');
         try {
             const response = await fetch(file);
@@ -192,19 +192,28 @@ async function loadIncludes(attempt = 1, maxAttempts = 3) {
             const html = await response.text();
             elem.outerHTML = html;
             console.log(`Successfully loaded ${file} on attempt ${attempt}`);
-            // Re-run navigation setup after include
-            setupNavListeners();
-            setActiveNavLinks();
+            return true;
         } catch (error) {
             console.error(`Failed to load ${file} on attempt ${attempt}:`, error);
             if (attempt < maxAttempts) {
                 console.log(`Retrying ${file} (attempt ${attempt + 1}/${maxAttempts})`);
-                await new Promise(resolve => setTimeout(resolve, 500));
-                return loadIncludes(attempt + 1, maxAttempts);
+                await new Promise(resolve => setTimeout(resolve, 100));
+                return false;
             } else {
-                elem.innerHTML = `<p class="text-red-600">Error loading ${file}: ${error.message}</p>`;
+                elem.innerHTML = `<p class="text-red-600 text-center">Error loading ${file}: ${error.message}</p>`;
+                return true;
             }
         }
+    });
+
+    const results = await Promise.all(promises);
+    if (results.every(result => result)) {
+        setupNavListeners();
+        setupMobileMenu();
+        setActiveNavLinks();
+    } else {
+        console.log(`Retrying includes load (attempt ${attempt + 1}/${maxAttempts})`);
+        return loadIncludes(attempt + 1, maxAttempts);
     }
 }
 
@@ -254,7 +263,7 @@ function handleNavClick(event, link) {
         link.classList.add('active');
         setTimeout(() => {
             window.location.href = href;
-        }, 100);
+        }, 200);
     }
 }
 
@@ -289,7 +298,7 @@ function setupNavListeners() {
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation(); // Prevent event from bubbling to mobileMenu
+            e.stopPropagation();
             console.log('Mobile menu button clicked');
             toggleMobileMenu();
         });
@@ -301,8 +310,16 @@ function setupNavListeners() {
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const header = document.getElementById('header');
-    if (!mobileMenu || !header) {
-        console.warn('Mobile menu or header not found');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (!mobileMenu || !header || !hamburgerIcon || !closeIcon) {
+        console.warn('Mobile menu elements not found:', {
+            mobileMenu: !!mobileMenu,
+            header: !!header,
+            hamburgerIcon: !!hamburgerIcon,
+            closeIcon: !!closeIcon
+        });
         return;
     }
 
@@ -311,7 +328,7 @@ function toggleMobileMenu() {
     mobileMenu.dataset.toggling = 'true';
 
     const isHidden = mobileMenu.classList.contains('hidden');
-    
+
     if (isHidden) {
         mobileMenu.classList.remove('hidden');
         mobileMenu.style.opacity = '1';
@@ -320,12 +337,16 @@ function toggleMobileMenu() {
         mobileMenu.classList.add('menu-open');
         header.classList.remove('rounded-b-3xl');
         header.classList.add('rounded-b-none');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
         console.log('Mobile menu opened');
     } else {
         mobileMenu.classList.remove('menu-open');
         mobileMenu.classList.add('menu-close');
         header.classList.add('rounded-b-3xl');
         header.classList.remove('rounded-b-none');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
         setTimeout(() => {
             mobileMenu.classList.add('hidden');
             mobileMenu.classList.remove('menu-close');
@@ -351,9 +372,8 @@ function setupMobileMenu() {
                 e.stopPropagation();
                 console.log(`Mobile nav link clicked: ${link.getAttribute('href')}`);
                 handleNavClick(e, link);
-                toggleMobileMenu(); // Close menu after click
+                toggleMobileMenu();
             } else if (e.target === mobileMenu) {
-                // Close menu if clicked outside a link
                 e.stopPropagation();
                 toggleMobileMenu();
             }
@@ -361,7 +381,7 @@ function setupMobileMenu() {
     } else {
         console.warn('Mobile menu not found');
     }
-    setActiveNavLinks(); // Ensure mobile links are set on load
+    setActiveNavLinks();
 }
 
 // Initialize
@@ -375,23 +395,35 @@ document.addEventListener('DOMContentLoaded', () => {
         populateFooter();
         setupNavListeners();
         setupMobileMenu();
+    }).catch((error) => {
+        console.error('Initialization failed:', error);
+        // Fallback initialization for mobile menu
+        setTimeout(() => {
+            console.log('Fallback: Attempting to initialize mobile menu');
+            setupNavListeners();
+            setupMobileMenu();
+        }, 1000);
     });
 });
 
 // Re-apply active links on window load
 window.addEventListener('load', () => {
-    console.log('Window loaded, re-applying active nav links');
+    console.log('Window loaded, re-applying active links');
     setActiveNavLinks();
 });
 
-// Re-apply active links on popstate (browser back/forward)
+// Re-apply active links on popstate
 window.addEventListener('popstate', () => {
-    console.log('Popstate event, re-applying active nav links');
+    console.log('Popstate event, re-applying active links');
     setActiveNavLinks();
 });
 
-// Fallback to ensure active links are set after potential delays
-setTimeout(() => {
-    console.log('Fallback: Re-applying active nav links after delay');
-    setActiveNavLinks();
-}, 3000);
+// Periodic fallback to ensure mobile menu is set up
+setInterval(() => {
+    if (document.getElementById('mobile-menu-btn') && !document.getElementById('mobile-menu-btn').hasAttribute('data-listener')) {
+        console.log('Periodic fallback: Setting up mobile menu');
+        setupNavListeners();
+        setupMobileMenu();
+        document.getElementById('mobile-menu-btn').setAttribute('data-listener', 'true');
+    }
+}, 2000);
