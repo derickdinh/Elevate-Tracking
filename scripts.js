@@ -5,15 +5,15 @@ const heroData = {
 };
 
 const features = [
-    { icon: `<img src="/icons/dumbbell.png" alt="Group 71 Icon" class="h-14 mx-auto">`, title: "Workouts", desc: "Effortlessly track your workouts, logging every set, and review your progress.", href: "#workout-showcase" },
+    { icon: `<img src="/icons/dumbbell.png" alt="Dumbbell Icon" class="h-14 mx-auto">`, title: "Workouts", desc: "Effortlessly track your workouts, logging every set, and review your progress.", href: "#workout-showcase" },
     { icon: `<img src="/icons/Nutrition.png" alt="Nutrition Icon" class="h-14 mx-auto">`, title: "Nutrition", desc: "Easily log your meals, tracking your nutrition and feel better than ever.", href: "#nutrition-showcase" },
     { icon: `<img src="/icons/social 2.png" alt="Social Icon" class="h-14 mx-auto">`, title: "Social", desc: "Follow and compete with your friends and other athletes", href: "#social-showcase" }
 ];
 
 const stats = [
     { value: "500K+", desc: "Waitlist Sign-Ups" },
-    { svg: `<svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`, desc: "Syncs with your favorite fitness tools" },
-    { title: "Your Fitness Revolution", desc: "Strength, endurance, and transformation—all in one app.", chart: true }
+    { svg: `<svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h"></svg>`, desc: "Syncs with your favorite fitness tools" },
+    { title: "Your Fitness Revolution", desc: "Strength, endurance, and transformation—all in one app.", image: true }
 ];
 
 const proSteps = [
@@ -39,11 +39,7 @@ function populateHero() {
     const heroIntegrations = document.getElementById('hero-integrations');
 
     if (!heroTitle || !heroSubtitle || !heroIntegrations) {
-        console.warn('Hero section elements not found:', {
-            heroTitle: !!heroTitle,
-            heroSubtitle: !!heroSubtitle,
-            heroIntegrations: !!heroIntegrations
-        });
+        console.warn('Hero section elements not found:', { heroTitle: !!heroTitle, heroSubtitle: !!heroSubtitle, heroIntegrations: !!heroIntegrations });
         return;
     }
 
@@ -63,6 +59,8 @@ function populateFeatures() {
                 <p class="text-gray-600">${feature.desc}</p>
             </div>
         `).join('');
+    } else {
+        console.warn('Features container not found');
     }
 }
 
@@ -70,6 +68,8 @@ function scrollToSection(sectionId) {
     const section = document.querySelector(sectionId);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        console.warn(`Section not found: ${sectionId}`);
     }
 }
 
@@ -82,6 +82,8 @@ function populateProSteps() {
                 <p class="text-gray-100">${step.desc}</p>
             </div>
         `).join('');
+    } else {
+        console.warn('Pro steps container not found');
     }
 }
 
@@ -94,6 +96,8 @@ function populateMissionStats() {
                 <p class="text-gray-600">${stat.desc}</p>
             </div>
         `).join('');
+    } else {
+        console.warn('Mission stats container not found');
     }
 }
 
@@ -102,6 +106,9 @@ function populateCTA() {
     const subtitle = document.getElementById('cta-subtitle');
     if (title) title.innerHTML = ctaData.title;
     if (subtitle) subtitle.textContent = ctaData.subtitle;
+    if (!title || !subtitle) {
+        console.warn('CTA elements not found:', { title: !!title, subtitle: !!subtitle });
+    }
 }
 
 function populateFooter() {
@@ -111,10 +118,12 @@ function populateFooter() {
             { text: 'Privacy Policy', href: '/privacy-policy' },
             { text: 'Terms of Service', href: '/terms-of-service' }
         ].map(item => `<a href="${item.href}" class="hover:text-white transition-colors duration-200">${item.text}</a>`).join('');
+    } else {
+        console.warn('Footer links container not found');
     }
 }
 
-function openPopup(element, title, description, imageSrc, features) {
+function openPopup(element, title, description, imageSrc, features = []) {
     const overlay = document.getElementById('popup-overlay');
     const popupContent = document.querySelector('.popup-content');
     const popupImage = document.getElementById('popup-image');
@@ -122,25 +131,46 @@ function openPopup(element, title, description, imageSrc, features) {
     const popupDescription = document.getElementById('popup-description');
     const popupFeatures = document.getElementById('popup-features');
 
-    if (overlay && popupContent && popupImage && popupTitle && popupDescription && popupFeatures) {
-        popupImage.src = imageSrc;
-        
+    if (!overlay || !popupContent || !popupImage || !popupTitle || !popupDescription || !popupFeatures) {
+        console.error('Popup elements missing:', {
+            overlay: !!overlay,
+            popupContent: !!popupContent,
+            popupImage: !!popupImage,
+            popupTitle: !!popupTitle,
+            popupDescription: !!popupDescription,
+            popupFeatures: !!popupFeatures
+        });
+        return;
+    }
+
+    try {
+        popupImage.src = imageSrc || '';
+        popupImage.onerror = () => {
+            popupImage.src = 'icons/fallback-icon.png';
+            console.warn(`Failed to load image: ${imageSrc}`);
+        };
         if (title === 'Track your Progress') {
             popupImage.style.filter = 'brightness(100%)';
         } else {
             popupImage.style.filter = 'none';
         }
 
-        popupTitle.textContent = title;
-        popupDescription.textContent = description;
+        popupTitle.textContent = title || 'No Title Provided';
+        popupDescription.textContent = description || 'No description available';
 
-        popupFeatures.innerHTML = features.map(feature => {
-            const lines = feature.text.split(' – ');
-            const heading = lines[0];
+        popupFeatures.innerHTML = features.map((feature, index) => {
+            const featureImage = feature.image || 'icons/default-feature-icon.png';
+            const featureText = feature.text || 'No feature text provided';
+
+            console.log(`Feature ${index + 1}: image=${featureImage}, text=${featureText}`);
+
+            const lines = featureText.split(' – ');
+            const heading = lines[0] || '';
             const rest = lines.length > 1 ? ' – ' + lines.slice(1).join(' – ') : '';
+
             return `
                 <li class="popup-feature">
-                    <img src="${feature.icon}" alt="Feature Icon" class="popup-feature-icon">
+                    <img src="${featureImage}" alt="Feature Icon" class="popup-feature-icon" onerror="this.src='icons/fallback-icon.png'; console.warn('Failed to load icon: ${featureImage}')">
                     <span><strong>${heading}</strong>${rest}</span>
                 </li>
             `;
@@ -163,32 +193,41 @@ function openPopup(element, title, description, imageSrc, features) {
         popupContent.addEventListener('animationend', () => {
             popupContent.classList.remove('appear');
         }, { once: true });
+    } catch (error) {
+        console.error('Error in openPopup:', error);
     }
 }
 
 function closePopup() {
     const overlay = document.getElementById('popup-overlay');
     if (overlay) {
-        overlay.classList.remove('visible');
-        overlay.addEventListener('transitionend', () => {
-            overlay.style.display = 'none';
-            document.body.classList.remove('no-scroll');
-            overlay.onclick = null;
-        }, { once: true });
+        try {
+            overlay.classList.remove('visible');
+            overlay.addEventListener('transitionend', () => {
+                overlay.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+                overlay.onclick = null;
+            }, { once: true });
+        } catch (error) {
+            console.error('Error in closePopup:', error);
+        }
     }
 }
 
-async function loadIncludes(attempt = 1, maxAttempts = 5) {
+async function loadIncludes(attempt = 1, maxAttempts = 3) {
     const elements = document.querySelectorAll('[include-html]');
-    if (elements.length === 0) {
+    if (!elements.length) {
         console.warn('No elements with include-html attribute found');
-        return;
+        return true;
     }
+
     const promises = Array.from(elements).map(async (elem) => {
         const file = elem.getAttribute('include-html');
         try {
             const response = await fetch(file);
-            if (!response.ok) throw new Error(`HTTP error ${response.status} for ${file}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status} for ${file}`);
+            }
             const html = await response.text();
             elem.outerHTML = html;
             console.log(`Successfully loaded ${file} on attempt ${attempt}`);
@@ -197,38 +236,30 @@ async function loadIncludes(attempt = 1, maxAttempts = 5) {
             console.error(`Failed to load ${file} on attempt ${attempt}:`, error);
             if (attempt < maxAttempts) {
                 console.log(`Retrying ${file} (attempt ${attempt + 1}/${maxAttempts})`);
-                await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 200));
                 return false;
             } else {
-                elem.innerHTML = `<p class="text-red-600 text-center">Error loading ${file}: ${error.message}</p>`;
+                elem.innerHTML = `<p class="text-red-500">Error loading ${file}</p>`;
                 return true;
             }
         }
     });
 
     const results = await Promise.all(promises);
-    if (results.every(result => result)) {
-        setupNavListeners();
-        setupMobileMenu();
-        setActiveNavLinks();
-    } else {
+    if (results.some(result => !result) && attempt < maxAttempts) {
         console.log(`Retrying includes load (attempt ${attempt + 1}/${maxAttempts})`);
         return loadIncludes(attempt + 1, maxAttempts);
     }
+    return results.every(result => result);
 }
 
-// Normalize URL path for comparison
 function normalizePath(path) {
-    return path.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '') || 'index';
+    return path.replace(/^\/+|\/+$/, '').replace(/\.html$/, '') || 'index';
 }
 
-// Set active navigation link based on current page
-function setActiveNavLinks() {
+function setActiveNav() {
     const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-    const currentPath = window.location.pathname;
-    console.log(`Current pathname: ${currentPath}`);
-
-    const normalizedCurrentPath = normalizePath(currentPath);
+    const currentPath = normalizePath(window.location.pathname);
     const pageMap = {
         '': 'index',
         '/': 'index',
@@ -236,29 +267,24 @@ function setActiveNavLinks() {
         'features': 'features',
         'elevate-pro': 'elevate-pro',
         'blog': 'blog',
-        'contact-us': 'contact-us'
+        'contact-us': 'index'
     };
 
-    const currentPage = pageMap[normalizedCurrentPath] || normalizedCurrentPath;
-    console.log(`Current page determined: ${currentPage}`);
+    const currentPage = pageMap[currentPath] || currentPath;
 
     navLinks.forEach(link => {
         const href = normalizePath(link.getAttribute('href'));
-        const isActive = href === currentPage;
-        console.log(`Checking link: href=${href}, isActive=${isActive}`);
-        link.classList.toggle('active', isActive);
+        link.classList.toggle('active', href === currentPage);
     });
 }
 
-// Handle navigation link clicks
 function handleNavClick(event, link) {
     event.preventDefault();
     const href = link.getAttribute('href');
-    const normalizedHref = normalizePath(href);
+    const normalizedLink = normalizePath(href);
     const currentPath = normalizePath(window.location.pathname);
-    console.log(`Nav click: href=${href}, normalizedHref=${normalizedHref}, currentPath=${currentPath}`);
 
-    if (normalizedHref !== currentPath) {
+    if (normalizedLink !== currentPath) {
         document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         setTimeout(() => {
@@ -267,7 +293,7 @@ function handleNavClick(event, link) {
     }
 }
 
-function setupNavListeners() {
+function setupNav() {
     const navMenu = document.getElementById('nav-menu');
     const logoLink = document.getElementById('header-logo-link');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -276,8 +302,6 @@ function setupNavListeners() {
         navMenu.addEventListener('click', (e) => {
             const link = e.target.closest('.nav-link');
             if (link) {
-                e.preventDefault();
-                console.log(`Nav link clicked: ${link.textContent}`);
                 handleNavClick(e, link);
             }
         });
@@ -287,8 +311,6 @@ function setupNavListeners() {
 
     if (logoLink) {
         logoLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log(`Logo link clicked: ${logoLink.getAttribute('href')}`);
             handleNavClick(e, logoLink);
         });
     } else {
@@ -299,7 +321,6 @@ function setupNavListeners() {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Mobile menu button clicked');
             toggleMobileMenu();
         });
     } else {
@@ -309,12 +330,12 @@ function setupNavListeners() {
 
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    const header = document.getElementById('header');
+    const header = document.querySelector('header');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const closeIcon = document.getElementById('close-icon');
 
     if (!mobileMenu || !header || !hamburgerIcon || !closeIcon) {
-        console.warn('Mobile menu elements not found:', {
+        console.warn('Mobile menu elements missing:', {
             mobileMenu: !!mobileMenu,
             header: !!header,
             hamburgerIcon: !!hamburgerIcon,
@@ -323,7 +344,6 @@ function toggleMobileMenu() {
         return;
     }
 
-    // Debounce to prevent rapid toggling
     if (mobileMenu.dataset.toggling === 'true') return;
     mobileMenu.dataset.toggling = 'true';
 
@@ -335,31 +355,26 @@ function toggleMobileMenu() {
         mobileMenu.style.transform = 'scaleY(1)';
         mobileMenu.classList.remove('menu-close');
         mobileMenu.classList.add('menu-open');
-        header.classList.remove('rounded-b-3xl');
-        header.classList.add('rounded-b-none');
+        header.classList.remove('rounded-b');
+        header.classList.add('open');
         hamburgerIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
-        console.log('Mobile menu opened');
     } else {
         mobileMenu.classList.remove('menu-open');
         mobileMenu.classList.add('menu-close');
-        header.classList.add('rounded-b-3xl');
-        header.classList.remove('rounded-b-none');
+        header.classList.add('rounded-b');
         hamburgerIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
         setTimeout(() => {
             mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('menu-close');
             mobileMenu.style.opacity = '0';
             mobileMenu.style.transform = 'scaleY(0)';
-            console.log('Mobile menu closed');
         }, 400);
     }
 
-    // Reset toggling flag after animation
     setTimeout(() => {
         mobileMenu.dataset.toggling = 'false';
-    }, 500);
+    }, 400);
 }
 
 function setupMobileMenu() {
@@ -370,7 +385,6 @@ function setupMobileMenu() {
             if (link) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log(`Mobile nav link clicked: ${link.getAttribute('href')}`);
                 handleNavClick(e, link);
                 toggleMobileMenu();
             } else if (e.target === mobileMenu) {
@@ -381,49 +395,77 @@ function setupMobileMenu() {
     } else {
         console.warn('Mobile menu not found');
     }
-    setActiveNavLinks();
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    loadIncludes().then(() => {
-        populateHero();
-        populateFeatures();
-        populateProSteps();
-        populateMissionStats();
-        populateCTA();
-        populateFooter();
-        setupNavListeners();
-        setupMobileMenu();
-    }).catch((error) => {
-        console.error('Initialization failed:', error);
-        // Fallback initialization for mobile menu
-        setTimeout(() => {
-            console.log('Fallback: Attempting to initialize mobile menu');
-            setupNavListeners();
-            setupMobileMenu();
-        }, 1000);
-    });
-});
+function setupPopupListeners(attempt = 1, maxAttempts = 3) {
+    const featureBlocks = document.querySelectorAll('.feature-block');
+    const overlay = document.getElementById('popup-overlay');
+    console.log(`Setting up popup listeners (attempt ${attempt}/${maxAttempts}) for ${featureBlocks.length} blocks`);
 
-// Re-apply active links on window load
-window.addEventListener('load', () => {
-    console.log('Window loaded, re-applying active links');
-    setActiveNavLinks();
-});
-
-// Re-apply active links on popstate
-window.addEventListener('popstate', () => {
-    console.log('Popstate event, re-applying active links');
-    setActiveNavLinks();
-});
-
-// Periodic fallback to ensure mobile menu is set up
-setInterval(() => {
-    if (document.getElementById('mobile-menu-btn') && !document.getElementById('mobile-menu-btn').hasAttribute('data-listener')) {
-        console.log('Periodic fallback: Setting up mobile menu');
-        setupNavListeners();
-        setupMobileMenu();
-        document.getElementById('mobile-menu-btn').setAttribute('data-listener', 'true');
+    if (!overlay) {
+        console.warn('Popup overlay not found. Retrying setup after delay...');
+        if (attempt < maxAttempts) {
+            setTimeout(() => setupPopupListeners(attempt + 1, maxAttempts), 200);
+        } else {
+            console.error('Failed to find popup overlay after maximum attempts');
+        }
+        return;
     }
-}, 2000);
+
+    if (featureBlocks.length === 0) {
+        console.warn('No feature blocks found with class .feature-block');
+        return;
+    }
+
+    featureBlocks.forEach(block => {
+        const popupData = block.dataset.popup;
+        if (popupData) {
+            try {
+                const data = JSON.parse(popupData);
+                block.addEventListener('click', () => {
+                    console.log('Popup triggered for block:', block);
+                    if (typeof openPopup === 'function') {
+                        openPopup(block, data.title, data.description, data.image, data.features);
+                    } else {
+                        console.error('openPopup function is not defined');
+                    }
+                });
+            } catch (error) {
+                console.error('Error parsing popup data for block:', block, error);
+            }
+        } else {
+            console.warn('No data-popup attribute found on block:', block);
+        }
+    });
+}
+
+async function initialize() {
+    try {
+        const includesLoaded = await loadIncludes();
+        if (includesLoaded) {
+            populateHero();
+            populateFeatures();
+            populateProSteps();
+            populateMissionStats();
+            populateCTA();
+            populateFooter();
+            setupNav();
+            setupMobileMenu();
+            setupPopupListeners();
+            setActiveNav();
+        } else {
+            console.error('Failed to load all includes after retries');
+            setupPopupListeners(); // Attempt to setup listeners even if includes fail
+        }
+    } catch (error) {
+        console.error('Initialization failed:', error);
+        setupNav();
+        setupMobileMenu();
+        setupPopupListeners();
+        setActiveNav();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initialize);
+window.addEventListener('load', setActiveNav);
+window.addEventListener('popstate', setActiveNav);
