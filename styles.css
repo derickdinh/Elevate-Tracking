@@ -190,7 +190,7 @@
 }
 .feature-showcase-nutrition .feature-block-2 img {
     max-height: 80%;
-    transform: translateY(57px);
+    transform: translateY(32px);
     image-rendering: auto;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .feature-showcase-nutrition .feature-block-4 img {
-    transform: translateY(74px);
+    transform: translateY(32px);
     image-rendering: auto;
 }
 
