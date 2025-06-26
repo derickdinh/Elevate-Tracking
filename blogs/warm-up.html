@@ -79,7 +79,7 @@
             <div class="max-w-6xl mx-auto">
                 <!-- Title -->
                 <div class="bg-white rounded-3xl shadow-lg p-8 mb-4 text-center">
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">🔥 The Ultimate Guide to Warming Up Before You Train</h1>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">The Ultimate Guide to Warming Up Before You Train | Elevate Fitness</h1>
                 </div>
                 <!-- Share and Author Containers -->
                 <div class="flex flex-col md:flex-row gap-4 mb-8">
@@ -359,4 +359,35 @@
                         <p>A warm-up isn’t something you “get through” — it’s part of your training. When done properly, it:</p>
                         <ul>
                             <li>Makes your first working sets feel better</li>
-                            <li>Reduces risk
+                            <li>Reduces risk of injury</li>
+                            <li>Enhances performance and muscle activation</li>
+                            <li>Sets the stage for consistent, long-term progress</li>
+                        </ul>
+                        <p>Whether you’re lifting heavy or chasing hypertrophy, a smart warm-up ensures your body is primed to perform at its best. Don’t skip it — invest 5–10 minutes to elevate your training and your gains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div include-html="../footer.html"></div>
+
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIncludes().then(() => {
+                console.log('Includes loaded successfully');
+            }).catch((error) => {
+                console.error('Failed to load includes:', error);
+            });
+        });
+
+        function handleInstagramShare() {
+            const url = 'https://elevatetracking.com/blogs/warm-up';
+            const caption = 'Check out this guide on warming up properly before training in 2025! 🔥 #Fitness #WarmUp';
+            alert(`Instagram sharing is not directly supported via web. Please copy this link and caption to share on Instagram:\n\nLink: ${url}\nCaption: ${caption}`);
+            window.open('https://www.instagram.com/', '_blank');
+        }
+    </script>
+</body>
+</html>
