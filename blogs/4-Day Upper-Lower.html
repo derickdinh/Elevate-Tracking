@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+    <meta name="description" content="A 4-day upper/lower hypertrophy workout split designed to maximize muscle growth with targeted exercises and optimal rest periods.">
+    <title>4-Day Upper/Lower Hypertrophy Workout Split | Elevate Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QKDPRV2JF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3QKDPRV2JF');
+    </script>
+    <style>
+        body {
+            background: #f3f4f6;
+        }
+        .prose h2 {
+            color: #1e3a8a;
+            font-weight: 900;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.025em;
+        }
+        .prose h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.6rem;
+            transition: color 0.2s ease;
+        }
+        .prose h3:hover {
+            color: #1e40af;
+        }
+        .prose ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .prose li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+        .prose li.warmup:before {
+            content: attr(data-warmup);
+            position: absolute;
+            left: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #facc15;
+            transform: translateX(-50%);
+        }
+        .prose li.working:before {
+            content: attr(data-working);
+            position: absolute;
+            left: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000000;
+            transform: translateX(-50%);
+        }
+        .prose table {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            background: white;
+        }
+        .prose th, .prose td {
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 1.1rem;
+        }
+        .exercise-container {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .exercise-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
+        }
+        .sets-container {
+            background: #eff6ff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #bfdbfe;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .info-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .important-info, .rest-info {
+            background: #dbeafe;
+            border-left: 6px solid #2563eb;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 200px;
+            font-size: 1.05rem;
+        }
+        .section-container {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+        .schedule-table tbody tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        .header-section {
+            background: #2563eb;
+            color: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+        }
+        .notes-section {
+            background: #1e3a8a;
+            color: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+        }
+        .notes-section ul li {
+            padding-left: 2rem;
+        }
+        .notes-section ul li:before {
+            content: '•';
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #facc15;
+        }
+        @media print {
+            .exercise-container:hover { transform: none; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2); }
+            body { background: white; }
+            .header-section, .notes-section { background: white; color: #1e3a8a; }
+            .notes-section ul li:before { color: #1e3a8a; }
+            .prose li.warmup:before { color: #ca8a04; }
+            .prose li.working:before { color: #000000; }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 flex flex-col min-h-screen">
+    <div class="flex-1">
+        <section class="py-16 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="header-section text-center mb-10">
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">4-Day Upper/Lower Hypertrophy Workout Split</h1>
+                    <p class="text-xl text-gray-200 italic">Maximize muscle growth with targeted exercises, sets, and rest periods</p>
+                </div>
+
+                <div class="section-container bg-blue-50">
+                    <h2 class="text-2xl font-extrabold mb-6">Workout Schedule</h2>
+                    <div class="prose prose-lg text-gray-800">
+                        <table class="table-auto w-full text-left border-collapse bg-white text-gray-800 rounded-xl overflow-hidden shadow-md schedule-table">
+                            <thead>
+                                <tr class="bg-blue-100">
+                                    <th class="px-4 py-2">Day</th>
+                                    <th class="px-4 py-2">Workout</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-4 py-2"><strong>Monday</strong></td>
+                                    <td class="px-4 py-2">Upper A</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2"><strong>Tuesday</strong></td>
+                                    <td class="px-4 py-2">Lower</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2"><strong>Thursday</strong></td>
+                                    <td class="px-4 py-2">Upper B</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2"><strong>Friday</strong></td>
+                                    <td class="px-4 py-2">Lower</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-container">
+                    <h2 class="text-2xl font-extrabold mb-6">Upper A (Monday)</h2>
+                    <div class="prose prose-lg text-gray-800">
+                        <div class="exercise-container">
+                            <h3>1. Cable Lat Pulldown (Bar Wide Grip)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Lats</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Pull by driving your elbows to the side of your body and keep your body still and slightly leaned back.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>2. Seated Row Machine (Overhand Wide Grip) - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Upper Back</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Pull with your elbows flared, at a little below 90°. Make sure you retract your scapula, squeezing your shoulder blades at the back and let your shoulder blades pull apart at the start.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>3. Smith Machine Incline Bench Press</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Chest</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Hold the bar a little outside shoulder width with the bar hitting around low to mid chest at the bottom. Make sure your elbows are semi-tucked at the bottom at around 45°.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>4. Chest Press Machine - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Chest</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>5. Cable Lateral Raise</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Shoulders</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 4 reps (70% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform the weaker side first. Set cable to around hand height and raise to the sides and slightly in front of your body.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>6. Seated Shoulder Press Machine (Selector)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Shoulders</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>7. Preacher Curl Machine - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Biceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Keep your chest and upper arms pressed against the pad.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>8. Preacher Curl Machine - Selector (Single Arm)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Biceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform weaker side first.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>9. Cable Tricep Pushdown (Rope)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Triceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Keep your elbows to the side of your body and push the rope down without moving your elbows.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>10. Cable Tricep Pushdown (Rope) - Single Arm</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Triceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform weaker side first. Use a cuff or a fabric D-handle with a neutral grip and hold cable tower for stability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-container bg-blue-50">
+                    <h2 class="text-2xl font-extrabold mb-6">Upper B (Thursday)</h2>
+                    <div class="prose prose-lg text-gray-800">
+                        <div class="exercise-container">
+                            <h3>1. Cable Tricep Pushdown (Bar)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Triceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> As you push down, let your elbows push forward in front of your body a bit instead of keeping your elbows fixed at the side of your body.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>2. Face Away Cable Curl (Bar)</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Biceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Keep your elbows beside your body and stand straight.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>3. Dumbbell Lateral Raise</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Shoulders</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Lean slightly forward and raise to your side and slightly forward.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>4. Smith Machine Incline Bench Press</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Chest</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Hold the bar a little outside shoulder width with the bar hitting around low to mid chest at the bottom. Make sure your elbows are semi-tucked at the bottom at around 45°.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>5. Pec Deck Machine</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Chest</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 4 reps (70% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform weaker side first. Start with elbows slightly bent and straighten your elbows as you bring your hands together. Set seat height so that the handles line up with mid to low chest.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>6. Seated Row Machine (Neutral Grip) - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Lats</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 4 reps (70% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform weaker side first. Pull with your elbows tucked in to your body.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>7. Seated Row Machine (Overhand Wide Grip) - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Upper Back</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Pull with your elbows flared, at a little below 90°. Make sure you retract your scapula, squeezing your shoulder blades at the back and let your shoulder blades pull apart at the start.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-container">
+                    <h2 class="text-2xl font-extrabold mb-6">Lower (Tuesday, Friday)</h2>
+                    <div class="prose prose-lg text-gray-800">
+                        <div class="exercise-container">
+                            <h3>1. Seated Leg Curl Machine</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Hamstrings</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>2. Hack Squat Machine</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Quadriceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>3. Calf Extension Machine</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Calves</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                    <li class="working" data-working="3">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Keep knees straight and emphasize the bottom portion of the calf raise, pausing at the bottom.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>4. Leg Extension Machine - Selector</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Quadriceps</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="WL">Warmup (Left): 4 reps (70% working weight)</li>
+                                    <li class="warmup" data-warmup="WR">Warmup (Right): 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="1R">Working (Right): 5-8 reps</li>
+                                    <li class="working" data-working="2L">Working (Left): 5-8 reps</li>
+                                    <li class="working" data-working="2R">Working (Right): 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Perform the weaker side first. Put non-working leg onto the seat.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>5. Barbell Romanian Deadlift</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Glutes & Hamstrings</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                            <div class="important-info">
+                                <p><strong>Notes:</strong> Keep back straight and slightly bend legs on the way down.</p>
+                            </div>
+                        </div>
+                        <div class="exercise-container">
+                            <h3>6. Hip Adduction Machine</h3>
+                            <div class="info-container">
+                                <div class="important-info">
+                                    <p><strong>Target Muscle:</strong> Adductors</p>
+                                </div>
+                                <div class="rest-info">
+                                    <p><strong>Rest:</strong> 180s between sets</p>
+                                </div>
+                            </div>
+                            <div class="sets-container">
+                                <p><strong>Sets:</strong></p>
+                                <ul>
+                                    <li class="warmup" data-warmup="W">Warmup: 8 reps (50% working weight)</li>
+                                    <li class="warmup" data-warmup="W">Warmup: 4 reps (70% working weight)</li>
+                                    <li class="working" data-working="1">Working: 5-8 reps</li>
+                                    <li class="working" data-working="2">Working: 5-8 reps</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-section">
+                    <h2 class="text-2xl font-extrabold mb-6">Important Program Notes</h2>
+                    <div class="prose prose-lg text-white">
+                        <ul>
+                            <li><strong>Weight Selection:</strong> Choose a weight that challenges you but allows you to maintain proper form. Aim for progressive overload over time.</li>
+                            <li><strong>Rest Times:</strong> Stick to the 180-second (3-minute) rest periods between sets to maximize recovery and performance. You can skip rest between warm-ups for efficiency.</li>
+                            <li><strong>Form:</strong> Follow the exercise notes carefully to ensure proper technique and reduce injury risk.</li>
+                            <li><strong>Elevate App:</strong> Prepare for the launch in Q4 2025 by joining the waitlist at <a href="https://elevatetracking.com" class="underline text-white hover:text-gray-200">elevatetracking.com</a>.</li>
+                        </ul>
+                        <p class="text-center text-2xl font-bold mt-8">Push your limits and enjoy the gains!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Workout plan loaded successfully');
+        });
+    </script>
+</body>
+</html>
